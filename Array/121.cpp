@@ -29,6 +29,7 @@ Constraints:
 #include<bits/stdc++.h>
 using namespace  std;
 
+//optimal
 int main(){
     vector<int> p;
     for(int i=0;i<6;i++){
