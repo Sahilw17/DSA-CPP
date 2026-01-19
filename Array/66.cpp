@@ -35,25 +35,24 @@ int main(){
     //int n=v.size()-1;
     int cnt=1;
     for(int i=v.size()-1;i>=0;i--){
-        if(v[i]<9 && i==v.size()-1){
+        if(cnt==0){
+            break;
+        }
+
+        else if(v[i]+cnt <=9){
             v[i]+=1;
+            cnt =0;
             break;
         }
-        else if(v[i]>=9){
+
+        else{
             v[i]=0;
-            v[i-1]+=1;
-            cnt+=1;
-        }
-        else if(cnt>0 && v[i]<=9 ){
-            cnt=0;
-            break;
+            cnt =1;
         }
     }
-    cout << cnt << endl;
-     if(v[0]>=9 && cnt>0 ){
-            v[0]=0;
-            v.insert(v.begin(),1);
-        }
+    if(cnt == 1){
+        v.insert(v.begin(), 1);
+    }
 
 
     for(int i=0;i<v.size();i++){
