@@ -26,3 +26,33 @@ Example 3:
 Input: candies = [12,1,12], extraCandies = 10
 Output: [true,false,true]
 */
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    vector<int>v={2,3,5,1,3};
+                //5,6,8,4,6
+    vector<bool>ans(v.size());
+    int extra=3;
+    int max=v[0];
+    for(int i=1;i<v.size();i++){
+        if(v[i]>max){
+            max=v[i];
+        }
+    }
+
+    cout << max <<  endl;
+    for(int i=0;i<v.size();i++){
+        if(v[i]+extra >=max){
+            ans[i]=true;
+        }
+        else{
+            ans[i]=false;
+        }
+    }
+
+    for(int i=0;i<v.size();i++){
+        cout << ans[i] <<"  ";
+    }
+}
