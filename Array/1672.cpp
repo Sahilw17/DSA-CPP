@@ -32,12 +32,11 @@ Output: 17
 using namespace std;
 
 int main(){
-    vector<vector<int>> vv={{2,8,7},{7,1,3},{1,9,5}};
+    vector<vector<int>> vv={{1,5},{7,3},{3,5}};
     //vector<int> ans(vv.size());
     int max=INT_MIN;
     int ans=0;
     for(int i=0;i<vv.size();i++){
-        max=0;
         for(int j=0;j<vv[i].size();j++){
             max+=vv[i][j];
             if(max>ans){
