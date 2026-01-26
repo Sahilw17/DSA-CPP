@@ -32,17 +32,35 @@ int main(){
     vector<int> v={-1,0,1,2,-1,-4};
     vector<vector<int>> vv;
     int n=v.size();
+    sort(v.begin(),v.end());
     for(int i=0;i<n-2;i++){
-        int left=i+1;
-        int right=n-1;
-        while(left < right){
-            if(v[i]+v[left]+v[right]==0){
-                cout << v[i] << " " << v[left] << " "<< v[right] << endl;
-            }
-            left++;
-            right--;
-        }
+        int l=i+1;
+        int r=n-1;
+        while(l < r){
+           int sum=v[i]+v[r]+v[l];
 
+           if(sum <0){
+            l++;
+           }
+           else if(sum >0){
+            r--;
+           }
+           else{
+            vv.push_back({v[i],v[l],v[r]});
+            l++;
+            r--;
+
+            while(l<r && v[l]==v[l-1])l++;
+            while(l<r && v[r]==v[r+1])r--;
+           }
+        }
+    }
+
+    for(int i=0;i<vv.size();i++){
+        for(int j=0;j<(vv[0].size());j++){
+            cout<<vv[i][j]<<" ";
+        }
+        cout<<endl;
     }
 
 }
