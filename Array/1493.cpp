@@ -23,17 +23,24 @@ Explanation: You must delete one element.
 using namespace std;
 
 int main(){
-    vector<int> v={1,1,1};
-    int cnt=0;
+    vector<int> v={0,1,1,1,0,1,1,0,1};
     int left=0;
-    int right=0;
-    for(int i=0;i<v.size();i++){
-        if(v[i]==0){
+    int cnt=0;
+    int maxL=INT_MIN;
+
+    for(int right=0;right<v.size();right++){
+        if(v[right]==0){
             cnt++;
         }
-        
+
+        while(cnt>1){
+            if(v[left]==0){
+                cnt--;
+            }
+            left++;
+        }
+
+        maxL=max(maxL,right-left);
     }
-    if(cnt<=1){
-        cout << v.size()-1;
-    }
+    cout << maxL;
 }
