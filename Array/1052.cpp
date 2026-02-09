@@ -10,7 +10,8 @@ but this technique can only be used once.
 Return the maximum number of customers that can be satisfied throughout the day.
 
 Example 1:
-Input: customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], minutes = 3
+Input: customers = [1,0,1,2,1,1,7,5], 
+          grumpy = [0,1,0,1,0,1,0,1], minutes = 3
 Output: 16
 Explanation:
 The bookstore owner keeps themselves not grumpy for the last 3 minutes.
@@ -23,3 +24,40 @@ Output: 1
 */
 
 #include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+       vector <int>cst{1,0,1,2,1,1,7,5};
+    vector<int>grumpy={0,1,0,1,0,1,0,1};//n=8
+                    // 0,2,1,5
+    int k=3;
+    int base=0;
+    int window=0;
+    int total=INT_MIN;
+    for(int i=0;i<cst.size();i++){
+        if(grumpy[i]==0){
+            base+=cst[i];
+            cst[i]=0;
+        }
+        window+=cst[i];
+        if(i >k-1){
+            window-=cst[i-k];
+        }
+        if(i >=k-1){
+            total=max(total,window);
+        }
+       
+    }
+    cout << base+total;
+}
+
+
+/*
+     window+=cst[i];
+       if(i > mins-1){
+            window-=cst[i-mins];
+        }
+       if(i >= mins-1){
+            total=max(total,window);
+        }
+*/
