@@ -23,14 +23,9 @@ using namespace std;
 int main(){
     vector<int> v={3,1,3,4,2};
     unordered_map<int,int>mp;
+    int dup=0;
     for(int i=0;i<v.size();i++){
-        mp[v[i]]++;
+        dup=v[i]^dup;
     }
-
-    for(int i=0;i<mp.size();i++){
-        if(mp[v[i]]==2){
-            cout << v[i];
-            break;
-        }
-    }
+    cout << dup;
 }
